@@ -43,13 +43,39 @@ public class CustomRelationItem : RelationItem
 }
 ```
 
-Returns the following:
+Given the following JSON:
+
+```
+{
+	"id": "order-1",
+	"items": [{
+			"id": "0",
+			"type": "product",
+			"productValue": "hello-from-product"
+		},
+		{
+			"id": "1",
+			"type": "relation",
+			"relationValue": "hello-from-relation-1"
+		},
+		{
+			"id": "2",
+			"type": "relation",
+			"relationValue": "hello-from-relation-2",
+			"relation": "customRelation",
+			"value": "hello-from-custom-relation-1"
+		}
+	]
+}
+```
+
+The converter returns the following:
 
 ```
 [Test]
 public void Test1()
 {
-    var json = "{\"id\":\"order-1\",\"items\":[{\"id\":\"0\",\"type\":\"product\",\"productValue\":\"hello-from-product\"},{\"id\":\"1\",\"type\":\"relation\",\"relationValue\":\"hello-from-relation-1\"},{\"id\":\"2\",\"type\":\"relation\",\"relationValue\":\"hello-from-relation-2\",\"relation\":\"customRelation\",\"value\":\"hello-from-custom-relation-1\"}]}";
+    var json = LoadJson(); // example json
 
     var result = JsonConvert.DeserializeObject<Order>(json);
 
