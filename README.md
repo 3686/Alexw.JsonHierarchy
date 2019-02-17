@@ -1,5 +1,6 @@
 ﻿# Alexw.JsonHierarchy
 Enables class hierarchy deserialization using attributes for Newtonsoft.Json
+This was enspired by [JsonSubTypes](https://github.com/manuc66/JsonSubTypes) which didn't support multiple inheritance using different properties.
 
 ## Usage
 
@@ -7,8 +8,9 @@ Enables class hierarchy deserialization using attributes for Newtonsoft.Json
 2. Let the convert know which field and values resolve types
 
 If you've not yet declared a property and value, it'll default to it's base type.
+We purposely support inheritance.
 
-We purposely support inheritance here.
+## Example
 
 ```csharp
 public class Order
@@ -47,25 +49,25 @@ Given the following JSON:
 
 ```
 {
-	"id": "order-1",
-	"items": [{
-			"id": "0",
-			"type": "product",
-			"productValue": "hello-from-product"
-		},
-		{
-			"id": "1",
-			"type": "relation",
-			"relationValue": "hello-from-relation-1"
-		},
-		{
-			"id": "2",
-			"type": "relation",
-			"relationValue": "hello-from-relation-2",
-			"relation": "customRelation",
-			"value": "hello-from-custom-relation-1"
-		}
-	]
+  "id": "order-1",
+  "items": [{
+      "id": "0",
+      "type": "product",
+      "productValue": "hello-from-product"
+    },
+    {
+      "id": "1",
+      "type": "relation",
+      "relationValue": "hello-from-relation-1"
+    },
+    {
+      "id": "2",
+      "type": "relation",
+      "relationValue": "hello-from-relation-2",
+      "relation": "customRelation",
+      "value": "hello-from-custom-relation-1"
+    }
+  ]
 }
 ```
 
